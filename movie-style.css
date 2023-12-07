@@ -1,0 +1,161 @@
+.movie__list {
+  max-width: 700px;
+  max-height: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.movie__list-hidden {
+  display: none;
+}
+
+.movie__info-hidden {
+  display: none;
+}
+
+.movie__list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.movie__list::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+}
+
+.movie__list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #00c6fb, #005bea);
+}
+
+.movie__item {
+  display: flex;
+  background-color: rgba(8, 48, 245, 0.45);
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.movie__item:hover {
+  background-color: rgba(88, 114, 244, 0.45);
+  border-radius: 40px;
+}
+
+.movie__poster {
+  padding: 30px;
+}
+
+.movie__img {
+  width: 100px;
+  height: 140px;
+}
+
+.movie__description {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+
+.movie__title {
+  font-size: clamp(0.938rem, 0.759rem + 0.89vw, 1.563rem);
+  color: rgba(0, 0, 0, 1);
+}
+
+.movie__type {
+  font-size: clamp(0.625rem, 0.536rem + 0.45vw, 0.938rem);
+  color: rgba(0, 0, 0, 1);
+}
+
+.movie__year {
+  font-size: clamp(0.625rem, 0.536rem + 0.45vw, 0.938rem);
+  color: rgba(0, 0, 0, 1);
+}
+
+.movie__info {
+  max-width: 600px;
+  max-height: 500px;
+  margin: 0 auto;
+}
+
+.btn__hidden {
+  display: none;
+}
+
+/* //////////////////// Стили когда показан один фильм  /////////////////////////////////////// */
+
+.back__btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  background-image: url(./resources/back.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-bottom: 17px;
+}
+
+.movie__inner {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.poster__movie {
+  max-width: 250px;
+}
+
+.title {
+  font-size: clamp(0.938rem, 0.759rem + 0.89vw, 1.563rem);
+  margin-bottom: 10px;
+}
+
+.movie__info-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.description {
+  font-size: clamp(0.813rem, 0.688rem + 0.63vw, 1.25rem);
+}
+
+.plot {
+  font-size: clamp(0.813rem, 0.688rem + 0.63vw, 1.25rem);
+}
+
+@media (max-width: 465px) {
+  .movie__poster {
+    padding: 20px;
+  }
+
+  .movie__img {
+    width: 84px;
+    height: 112px;
+  }
+
+  .movie__description {
+    gap: 19px;
+    padding: 20px;
+  }
+
+  .movie__inner {
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+
+  .poster__movie {
+    width: 134px;
+    height: 227px;
+  }
+
+  .movie__info-description {
+    gap: 10px;
+  }
+}

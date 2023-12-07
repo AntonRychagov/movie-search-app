@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="movie-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo&family=IBM+Plex+Mono&family=Inter:wght@400;700&family=Manrope:wght@400;700&family=Ubuntu:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Movie Search App</title>
+  </head>
+  <body>
+    <header>
+      <div class="container"></div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="form__wrapper">
+          <form class="form" action="#">
+            <input
+              id="inputValue"
+              class="input"
+              type="text"
+              placeholder="Enter movie title"
+            />
+            <button id="button" class="button__search">Найти</button>
+          </form>
+        </div>
+        <ul id="movieList" class="movie__list"></ul>
+        <div id="movieInfo" class="movie__info"></div>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
