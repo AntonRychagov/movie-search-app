@@ -27,6 +27,7 @@ async function movieSearch(movieTitle) {
   //получаем ответ
   const data = await res.json();
   if (data.Response === "True") {
+    movieListNode.classList.remove("movie__list-hidden");
     showMovies(data.Search);
   }
 
@@ -130,7 +131,6 @@ function clearInput() {
 
 function validation() {
   const input = inputValueNode.value.trim().length;
-  console.log(input);
   if (input === 0 || input === "" || input > MAX_VALUE_TITLE) {
     buttonFindNode.disabled = true;
   } else {
