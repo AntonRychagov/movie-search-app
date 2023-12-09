@@ -25,7 +25,7 @@ async function movieSearch(movieTitle) {
   const res = await fetch(
     `https://www.omdbapi.com/?s=${movieTitle}&apikey=b31c8dc2`
   );
-  document.querySelector('#loader').classList.add('loader')
+  document.querySelector("#loader").classList.add("loader");
   // //получаем ответ
   const data = await res.json();
   if (data.Response === "True") {
@@ -33,7 +33,7 @@ async function movieSearch(movieTitle) {
     showMovies(data.Search);
   }
   loadMovieInfo();
-  document.querySelector('#loader').classList.remove('loader')
+  document.querySelector("#loader").classList.remove("loader");
 }
 
 //получаем название фильма от USER
@@ -80,19 +80,19 @@ function loadMovieInfo() {
     movie.addEventListener("click", async () => {
       movieListNode.classList.add("movie__list-hidden");
       movieInfoNode.classList.remove("movie__info-hidden");
-      document.querySelector('#loader').classList.add('loader')
+      document.querySelector("#loader").classList.add("loader");
       //отправляем запрос на сервер
       const res = await fetch(
         `https://www.omdbapi.com/?i=${movie.id}&apikey=b31c8dc2`
       );
-      
+
       if (res.ok === true) {
         const movieInfo = await res.json();
         //получаем ответ от сервера
         showMovieInfo(movieInfo);
         backToList();
       }
-      document.querySelector('#loader').classList.remove('loader')
+      document.querySelector("#loader").classList.remove("loader");
     });
   });
 }
@@ -102,7 +102,7 @@ function backToList() {
   backButtonNode.addEventListener("click", function () {
     movieListNode.classList.remove("movie__list-hidden");
     movieInfoNode.classList.toggle("movie__info-hidden");
-    movieInfoNode.innerHTML = '';
+    movieInfoNode.innerHTML = "";
   });
 }
 
@@ -128,13 +128,11 @@ function showMovieInfo(movie) {
   </div>
   <div class="plot">${movie.Plot}</div>
   `;
- 
 }
 
 function clearInput() {
   inputValueNode.value = "";
 }
-
 
 function validation() {
   const input = inputValueNode.value.trim().length;
