@@ -43,6 +43,7 @@ function findMovie() {
   movieListNode.classList.remove("movie__list-hidden");
   movieInfoNode.classList.add("movie__info-hidden");
   clearInput();
+  movieInfoNode.innerHTML = ""
 }
 
 //отрисовываем HTML
