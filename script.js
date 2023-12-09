@@ -32,7 +32,6 @@ async function movieSearch(movieTitle) {
     movieListNode.classList.remove("movie__list-hidden");
     showMovies(data.Search);
   }
-
   loadMovieInfo();
   document.querySelector('#loader').classList.remove('loader')
 }
