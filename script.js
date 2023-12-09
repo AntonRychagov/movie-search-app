@@ -34,19 +34,7 @@ function movieSearch(movieTitle) {
         showMovies(data.Search);
         loadMovieInfo();
       }
-    });  
-    // loadMovieInfo();
-  // const res = await fetch(
-  //   `https://www.omdbapi.com/?s=${movieTitle}&apikey=b31c8dc2`
-  // );
-  // //получаем ответ
-  // const data = await res.json();
-  // if (data.Response === "True") {
-  //   movieListNode.classList.remove("movie__list-hidden");
-  //   showMovies(data.Search);
-  // }
-
-  // loadMovieInfo();
+    }); 
 }
 
 //получаем название фильма от USER
