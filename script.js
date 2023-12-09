@@ -6,7 +6,7 @@ const inputValueNode = document.querySelector("#inputValue");
 const buttonFindNode = document.querySelector("#button");
 const movieListNode = document.querySelector("#movieList");
 const movieInfoNode = document.querySelector("#movieInfo");
-const loaderNode = document.querySelector('#loader')
+const loaderNode = document.querySelector("#loader");
 
 buttonFindNode.addEventListener("click", findMovie);
 movieListNode.addEventListener("click", loadMovieInfo);
@@ -20,33 +20,21 @@ function init() {
 }
 
 //отправялем запрос на сервер
-function movieSearch(movieTitle) {
+async function movieSearch(movieTitle) {
   //отправляем запрос на сервер
-  fetch(`https://www.omdbapi.com/?s=${movieTitle}&apikey=b31c8dc2`)
-    .then(function (response) {
-      document.querySelector("#movieList").classList.add("loader");
-      return response.json();
-    })
-    .then(function (data) {
-      document.querySelector('#movieList').classList.remove('loader');
-      if (data.Response === "True") {
-        movieListNode.classList.remove("movie__list-hidden");
-        showMovies(data.Search);
-        loadMovieInfo();
-      }
-    });  
-    // loadMovieInfo();
-  // const res = await fetch(
-  //   `https://www.omdbapi.com/?s=${movieTitle}&apikey=b31c8dc2`
-  // );
+  const res = await fetch(
+    `https://www.omdbapi.com/?s=${movieTitle}&apikey=b31c8dc2`
+  );
+  document.querySelector('#loader').classList.add('loader')
   // //получаем ответ
-  // const data = await res.json();
-  // if (data.Response === "True") {
-  //   movieListNode.classList.remove("movie__list-hidden");
-  //   showMovies(data.Search);
-  // }
+  const data = await res.json();
+  if (data.Response === "True") {
+    movieListNode.classList.remove("movie__list-hidden");
+    showMovies(data.Search);
+  }
 
-  // loadMovieInfo();
+  loadMovieInfo();
+  document.querySelector('#loader').classList.remove('loader')
 }
 
 //получаем название фильма от USER
@@ -93,16 +81,19 @@ function loadMovieInfo() {
     movie.addEventListener("click", async () => {
       movieListNode.classList.add("movie__list-hidden");
       movieInfoNode.classList.remove("movie__info-hidden");
+      document.querySelector('#loader').classList.add('loader')
       //отправляем запрос на сервер
       const res = await fetch(
         `https://www.omdbapi.com/?i=${movie.id}&apikey=b31c8dc2`
       );
+      
       if (res.ok === true) {
         const movieInfo = await res.json();
         //получаем ответ от сервера
         showMovieInfo(movieInfo);
         backToList();
       }
+      document.querySelector('#loader').classList.remove('loader')
     });
   });
 }
@@ -112,6 +103,7 @@ function backToList() {
   backButtonNode.addEventListener("click", function () {
     movieListNode.classList.remove("movie__list-hidden");
     movieInfoNode.classList.toggle("movie__info-hidden");
+    movieInfoNode.innerHTML = '';
   });
 }
 
@@ -136,13 +128,14 @@ function showMovieInfo(movie) {
     </div>
   </div>
   <div class="plot">${movie.Plot}</div>
-  
   `;
+ 
 }
 
 function clearInput() {
   inputValueNode.value = "";
 }
+
 
 function validation() {
   const input = inputValueNode.value.trim().length;

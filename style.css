@@ -44,7 +44,7 @@ body {
 }
 
 ::placeholder {
-    color: rgba(0, 0, 0, 0.718);
+  color: rgba(0, 0, 0, 0.718);
 }
 
 .button__search {
@@ -68,57 +68,64 @@ body {
 }
 
 .loader {
-    width: 50px;
-    height: 50px;
-    box-sizing: border-box;
-    border-top: 0.3em solid hotpink;
-    border-radius: 50%;
-    position: relative;
-    animation: rotating 2s ease-in-out infinite;
-    --direction: 1;
+  margin: auto;
+  width: 50%;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink;
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite;
+  --direction: 1;
 }
 
 .loader::before,
 .loader::after {
-    content: '';
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    border-radius: 50%;
-    box-sizing: border-box;
-    top: -0.2em;
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  box-sizing: border-box;
+  top: -0.2em;
 }
 
 .loader::before {
-    border-top: 0.3em solid dodgerblue;
-    transform: rotate(120deg);
+  border-top: 0.3em solid dodgerblue;
+  transform: rotate(120deg);
 }
 
 .loader::after {
-    border-top: 0.3em solid gold;
-    transform: rotate(240deg);
+  border-top: 0.3em solid gold;
+  transform: rotate(240deg);
 }
 
 .loader span {
-    position: absolute;
-    color: white;
-    width: inherit;
-    height: inherit;
-    text-align: center;
-    line-height: 10em;
-    font-family: sans-serif;
-    animation: rotating 2s linear infinite;
-    --direction: -1;
+  position: absolute;
+  color: white;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 10em;
+  font-family: sans-serif;
+  animation: rotating 2s linear infinite;
+  --direction: -1;
+}
+
+.inner {
+  max-width: 670px;
+  margin: 0 auto;
 }
 
 @keyframes rotating {
-    50% {
-        transform: rotate(calc(180deg * var(--direction)));
-    }
+  50% {
+    transform: rotate(calc(180deg * var(--direction)));
+  }
 
-    100% {
-        transform: rotate(calc(360deg * var(--direction)));
-    }
+  100% {
+    transform: rotate(calc(360deg * var(--direction)));
+  }
 }
 
 /* ////////////////////////////////////////////////////////// */

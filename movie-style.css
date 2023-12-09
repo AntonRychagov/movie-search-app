@@ -1,5 +1,4 @@
 .movie__list {
-  max-width: 700px;
   max-height: 500px;
   margin: 0 auto;
   display: flex;
@@ -75,11 +74,7 @@
   color: rgba(0, 0, 0, 1);
 }
 
-.movie__info {
-  max-width: 600px;
-  max-height: 500px;
-  margin: 0 auto;
-}
+
 
 .btn__hidden {
   display: none;
