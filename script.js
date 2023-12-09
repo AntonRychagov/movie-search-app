@@ -1,5 +1,6 @@
 const apiKey = "b31c8dc2";
 const HIDDEN_CLASSNAME = "btn__hidden";
+const MAX_VALUE_TITLE = 50;
 
 const inputValueNode = document.querySelector("#inputValue");
 const buttonFindNode = document.querySelector("#button");
@@ -13,6 +14,8 @@ init();
 
 function init() {
   inputValueNode.focus();
+  inputValueNode.addEventListener("input", validation);
+  buttonFindNode.disabled = true;
 }
 
 //отправялем запрос на сервер
@@ -78,23 +81,22 @@ function loadMovieInfo() {
       const res = await fetch(
         `https://www.omdbapi.com/?i=${movie.id}&apikey=b31c8dc2`
       );
-      //получаем ответ от сервера
-      const movieInfo = await res.json();
-      //
-      showMovieInfo(movieInfo);
-      backToList();
+      if (res.ok === true) {
+        const movieInfo = await res.json();
+        //получаем ответ от сервера
+        showMovieInfo(movieInfo);
+        backToList();
+      }
     });
   });
 }
 
 function backToList() {
   const backButtonNode = document.querySelector(".back__btn");
-  backButtonNode.addEventListener("click", classSelector);
-}
-
-function classSelector() {
-  movieListNode.classList.remove("movie__list-hidden");
-  movieInfoNode.classList.toggle("movie__info-hidden");
+  backButtonNode.addEventListener("click", function () {
+    movieListNode.classList.remove("movie__list-hidden");
+    movieInfoNode.classList.toggle("movie__info-hidden");
+  });
 }
 
 //отрисовываем HTML разметку
@@ -126,29 +128,12 @@ function clearInput() {
   inputValueNode.value = "";
 }
 
-// movieListNode.innerHTML = "";
-
-// for (let i = 0; i < movies.length; i++) {
-
-//   let listMovie = document.createElement("li");
-
-//   listMovie.dataset.id = movies[i].imdbID;
-
-//   if (movies[i].Poster !== "N/A") {
-//     moviePoster = movies[i].Poster;
-//   } else {
-//     moviePoster = "./resources/no img.jpg";
-//   }
-
-//   movieListNode.innerHTML += `
-//   <li class='movie__item'>
-//     <div class='movie__img'>
-//       <img src="${moviePoster}">
-//     </div>
-//     <div class='movie__wrapper'>
-//       <h2 class='movie__title'>${movies[i].Title}</h2>
-//     </div>
-//   </li>
-//   `;
-// }
-// };
+function validation() {
+  const input = inputValueNode.value.trim().length;
+  console.log(input);
+  if (input === 0 || input === "" || input > MAX_VALUE_TITLE) {
+    buttonFindNode.disabled = true;
+  } else {
+    buttonFindNode.disabled = false;
+  }
+}
